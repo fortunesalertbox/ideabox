@@ -1,0 +1,7 @@
+*.pyc
+*.db
+venv
+
+export DATABASE_LINK="postgresql://postgres:test123@localhost/myapp_users"
+
+export APP_SETTINGS="config.DevelopmentConfig"

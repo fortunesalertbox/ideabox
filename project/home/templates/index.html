@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block header %}
+		<header>
+		<nav class="navbar navstyle navbar-static-top no-margin no-padding" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mobile-display" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="/" class="navbar-brand"><strong id="logo"><em>Idea</em>Box</strong></a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="mobile-display">
+				<div class="navbar-right">
+					<ul class="nav navbar-nav navstyle-links">
+						<li><a href="/">Home</a></li>
+						<li><a href="/logout">Logout</a></li>
+						<li><a href="/profile">Profile</a></li>
+					</ul>
+				</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+{% endblock %}
+{% block content %}
+
+
+	<div class="container home">
+		<div class="col-md-8 latest">
+			<div class="panel panel-default">
+				
+				<!-- post form -->
+				<h3>Share an Idea</h3>
+				<form class="form-message" role="form" method="post" action="/">
+				{{ form.csrf_token }}
+				<p>
+				{{ form.title(placeholder="Title") }}
+				<span class="error">
+				  {% if form.title.errors %}
+				    {% for error in form.title.errors %}
+				      {{ error }}
+				    {% endfor %}
+				  {% endif %}
+				</span>
+				</p>
+				<p>
+				{{ form.description(placeholder="Ideas comes so little, just share it", rows='5',cols='87') }}
+				<span class="error">
+				  {% if form.description.errors %}
+				    {% for error in form.description.errors %}
+				      {{ error }}
+				    {% endfor %}
+				  {% endif %}
+				</span>
+				</p>
+				<button class="btn btn-sm btn-success pull-right" type="submit">Share</button>
+				</form>
+
+				
+				<div class="panel-body">
+				
+					{% for post in posts %}
+						
+						<strong class="h2"> {{ post.title }} </strong>
+						<p>{{ post.description }}</p>
+						<p class="pull-right"><em>Posted by: </em><strong>{{ post.author.first_name }} </strong>
+						</p> <br>
+						<p>
+						<a href="#" class="glyphicon glyphicon-thumbs-up">0 |  </a> 
+						<a href="#" class="glyphicon glyphicon-thumbs-down">0</a>
+						<a href="#"><em>Add a comment</em></a>
+						</p> 
+						<br><br><br>
+					{% endfor %}
+
+				<a href="#" class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> 0 </a> 
+				<a href="#" class="glyphicon glyphicon-comment"></a>
+				<a href="#" class="glyphicon glyphicon-thumbs-down pull-right" aria-hidden="true">  0</a>
+				
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="col-md-4">
+			<h3 class="trending">Welcome {{ first_name }} {{ last_name }}</h3>
+				<h2><strong>Listening to the world</strong> </h2> 
+				<p>The world helps itself and the same time destroys itself</p>
+		</div>
+	</div>
+
+
+
+{% endblock %}

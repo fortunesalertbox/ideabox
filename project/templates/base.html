@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% block head %}
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{ title }} | IdeaBox</title>
+	<link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="static/css/custom.css">
+	{% endblock %}
+</head>
+<body>
+		<!-- header goes in here-->
+		{% block header %}
+		{% endblock %}
+
+
+		<!-- error messages -->
+		{% if error %}
+			<div class="container alert alert-danger alert-dismissible" role="alert">
+				<strong>Error:</strong>
+			  	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			  		<span aria-hidden="true">&times;</span>
+			  	</button> 
+			  {{ error }}
+			</div>
+		{% endif %}
+
+
+		<!-- flash messages -->
+		{% for messages in get_flashed_messages() %}
+			<div class="container alert alert-info alert-dismissible" role="alert">
+			 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			 	<span aria-hidden="true">&times;</span>
+			 </button> 
+  				{{ messages }}
+			</div>
+
+		{% endfor %}
+
+		<!-- the child template starts within the block below-->
+		{% block content %}
+
+		{% endblock %}
+		
+	<footer class=" footer container-fluid footerstyle">
+		<p>IdeaBox &copy; 2016</p>
+	</footer>
+	<script src="static/js/jquery.js"></script>
+	<script src="static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block header %}
+		<header>
+		<nav class="navbar navstyle navbar-static-top no-margin no-padding" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mobile-display" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="/" class="navbar-brand"><strong id="logo"><em>Idea</em>Box</strong></a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="mobile-display">
+				<div class="navbar-right">
+					<ul class="nav navbar-nav navstyle-links">
+						<li><a href="/">Home</a></li>
+						<li><a href="/login">Login</a></li>
+						<li><a href="/signup">Signup</a></li>
+						<li><a href="/about">About</a></li>
+					</ul>
+				</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+{% endblock %}
+{% block content %}
+
+<div class="container signup"> 
+	<h4>Signup Form </h4><br><br>
+	<form class="form-signin" role="form" method="post" action="">
+	  {{ form.csrf_token }}
+	  <p>
+	    {{ form.first_name(placeholder="First name") }}
+	    <span class="error">
+	      {% if form.first_name.errors %}
+	        {% for error in form.first_name.errors %}
+	          {{ error }}
+	        {% endfor %}
+	      {% endif %}
+	    </span>
+	  </p>
+	  <p>
+	    {{ form.last_name(placeholder="Last name") }}
+	    <span class="error">
+	      {% if form.last_name.errors %}
+	        {% for error in form.last_name.errors %}
+	          {{ error }}
+	        {% endfor %}
+	      {% endif %}
+	    </span>
+	    </p>
+	  <p>
+	  {{ form.email(placeholder="Email") }}
+	    <span class="error">
+	      {% if form.email.errors %}
+	        {% for error in form.email.errors %}
+	          {{ error }}
+	        {% endfor %}
+	      {% endif %}
+	    </span>
+	  </p>
+	  <p>
+	  {{ form.password(placeholder="password") }}
+	    <span class="error">
+	      {% if form.password.errors %}
+	        {% for error in form.password.errors %}
+	          {{ error }}
+	        {% endfor %}
+	      {% endif %}
+	    </span>
+	  </p>
+	  <p>
+	  {{ form.confirm(placeholder="confirm") }}
+	    <span class="error">
+	      {% if form.confirm.errors %}
+	        {% for error in form.confirm.errors %}
+	          {{ error }}
+	        {% endfor %}
+	      {% endif %}
+	    </span>
+	  </p>
+	  <button class="btn btn-sm btn-success" type="submit">Register!</button>
+	</form>
+
+
+</div>
+
+
+{% endblock %}
+
