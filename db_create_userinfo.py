@@ -1,5 +1,5 @@
-from app import db
-from models import UserInfo
+from project import db
+from project.models import UserInfo, Post
 
 # insert data
 db.session.add(UserInfo("fortune", "iyke", "legalmody@gmail.com", "test123"))

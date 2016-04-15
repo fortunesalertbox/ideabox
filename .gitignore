@@ -11,3 +11,6 @@ https://git.heroku.com/projectideabox.git
 heroku config:set APP_SETTINGS=config.ProductionConfig --remote heroku
 
 HEROKU_POSTGRESQL_IVORY_URL: postgres://gmhttfelcpwwfi:evzpMAnpkYtEBXvvk_Z8D19LCC@ec2-23-21-42-29.compute-1.amazonaws.com:5432/d3ueb84i7vg0l7
+
+
+heroku config:set DATABASE_LINK=postgres://gmhttfelcpwwfi:evzpMAnpkYtEBXvvk_Z8D19LCC@ec2-23-21-42-29.compute-1.amazonaws.com:5432/d3ueb84i7vg0l7 --remote heroku
