@@ -76,5 +76,5 @@ def login():
 def logout():
 	#session.pop('logged_in', None)
 	logout_user()
-	flash('You were logged out.')
+	flash('You\'ve been logged out.')
 	return redirect(url_for('home.welcome'))

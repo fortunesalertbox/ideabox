@@ -21,6 +21,12 @@ body{
 	background: rgb(56, 75, 208);
 }
 
+.navbar-toggle{
+	border: 1px solid white;
+}
+.icon-bar{
+	background: white;
+}
 
 .navstyle-links a:hover{
 	color: darkblue;
@@ -41,7 +47,6 @@ body{
 .welcome{
 	background:url(../images/backg.jpg) fixed no-repeat;
 	background-size: 100%;
-	min-width: 800px;
 }
 
 .small{
