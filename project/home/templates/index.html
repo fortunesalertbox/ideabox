@@ -16,7 +16,7 @@
 				<div class="collapse navbar-collapse" id="mobile-display">
 				<div class="navbar-right">
 					<ul class="nav navbar-nav navstyle-links">
-						<li><a href="/">Home</a></li>
+						<li><a href="/index">Home</a></li>
 						<li><a href="/logout">Logout</a></li>
 						<li><a href="/profile">Profile</a></li>
 					</ul>
@@ -32,7 +32,7 @@
 	<div class="container home">
 		<div class="col-md-8 latest">
 			<div class="panel panel-default">
-				
+				<div class="panel-body">
 				<!-- post form -->
 				<h3>Share an Idea</h3>
 				<form class="form-message" role="form" method="post" action="/">
@@ -59,31 +59,33 @@
 				</p>
 				<button class="btn btn-sm btn-success pull-right" type="submit">Share</button>
 				</form>
+				</div>
+			</div>
 
-				
+				{% for post in posts %}				
+				<div class="panel panel-default">
 				<div class="panel-body">
 				
-					{% for post in posts %}
+
 						
-						<strong class="h2"> {{ post.title }} </strong>
-						<p>{{ post.description }}</p>
-						<p class="pull-right"><em>Posted by: </em><strong>{{ post.author.first_name }} </strong>
-						</p> <br>
-						<p>
-						<a href="#" class="glyphicon glyphicon-thumbs-up">0 |  </a> 
-						<a href="#" class="glyphicon glyphicon-thumbs-down">0</a>
-						<a href="#"><em>Add a comment</em></a>
-						</p> 
-						<br><br><br>
-					{% endfor %}
+					<strong class="h2"> {{ post.title | title}} </strong>
+					<p>{{ post.description | capitalize }}</p>
+					<p class="pull-right"><em>Posted by: </em><strong>{{ post.author.first_name | capitalize}} {{ post.author.last_name | capitalize}} </strong>
+					</p> <br>
+					<div>
+					<a href="/upvote" class="glyphicon glyphicon-thumbs-up">{{ upvote }} |  </a> </strong>
+					<a href="#" class="glyphicon glyphicon-thumbs-down">0  </a></strong>
+					<a href="#"><em>Add a comment</em></a>
+					</div> 
+
+				
+				</div>
+			</div>
+			{% endfor %}
 
 				<a href="#" class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> 0 </a> 
 				<a href="#" class="glyphicon glyphicon-comment"></a>
 				<a href="#" class="glyphicon glyphicon-thumbs-down pull-right" aria-hidden="true">  0</a>
-				
-				</div>
-			</div>
-
 		</div>
 
 

@@ -6,7 +6,7 @@ from project import app, db
 from project.models import UserInfo, Post
 from flask import flash, redirect, request, url_for, \
 	render_template, Blueprint
-from flask.ext.login import login_required, current_user
+from flask.ext.login import login_required, login_user, logout_user, current_user
 #from functools import wraps
 
 from form import MessageForm
@@ -21,6 +21,7 @@ home_blueprint = Blueprint(
 )
 
 # This helper function is just sticking around for a while
+#if 'logged_in' in session:
 """
 ##########################
 #### helper functions ####
@@ -29,20 +30,19 @@ home_blueprint = Blueprint(
 def login_required(test):
 	@wraps(test)
 	def wrap(*args, **kwargs):
-		if 'logged_in' in session:
+		if login_user == False:
 			return test(*args, **kwargs)
 		else:
 			flash('You need to login first.')
-			return redirect(url_for('welcome'))
-	return wrap 
-"""
+			return redirect(url_for('home.welcome'))
+	return wrap"""
+
 ############
 ## Routes ##
 ############
 
 
-@home_blueprint.route('/', methods=['GET', 'POST'])
-@home_blueprint.route('/index')
+@home_blueprint.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
 	error = None
@@ -69,6 +69,16 @@ def index():
 	)
 
 
+@home_blueprint.route('/')
 @home_blueprint.route('/welcome')
 def welcome():
 	return render_template('welcome.html', title="Welcome")
+
+
+@home_blueprint.route('/upvote', methods=['GET', 'POST'])
+def upvote():
+	pass
+
+@home_blueprint.route('/downvote')
+def downvote():
+	pass

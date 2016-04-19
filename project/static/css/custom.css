@@ -46,7 +46,7 @@ body{
 
 .welcome{
 	background:url(../images/backg.jpg) fixed no-repeat;
-	background-size: 100%;
+	background-size: cover;
 }
 
 .small{

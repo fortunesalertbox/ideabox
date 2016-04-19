@@ -31,9 +31,9 @@ def signup():
 	form=RegistrationForm()
 	if form.validate_on_submit():
 		user=UserInfo(
-			first_name=form.first_name.data,
-			last_name=form.last_name.data,
-			email=form.email.data,
+			first_name=form.first_name.data.strip(),
+			last_name=form.last_name.data.strip(),
+			email=form.email.data.strip(),
 			password=form.password.data
 		)
 		db.session.add(user)
@@ -55,7 +55,7 @@ def login():
 	if request.method == 'POST':
 		if form.validate_on_submit():
 			user = UserInfo.query.filter_by(
-				email=request.form['email']
+				email=request.form['email'].strip()
 			).first()
 			if user is not None and \
 					sha256_crypt.verify(
@@ -64,7 +64,7 @@ def login():
 					):
 				#session['logged_in'] = True 
 				login_user(user)
-				flash('login successful')
+				#flash('login successful')
 				return redirect(url_for('home.index'))
 			else:
 				error = 'The Email or Password you entered maybe wrong. Please try again'
@@ -76,5 +76,5 @@ def login():
 def logout():
 	#session.pop('logged_in', None)
 	logout_user()
-	flash('You\'ve been logged out.')
+	#flash('You\'ve been logged out.')
 	return redirect(url_for('home.welcome'))
