@@ -6,8 +6,9 @@ from project import app, db
 from project.models import UserInfo, Post
 from flask import flash, redirect, request, url_for, \
 	render_template, Blueprint
-from flask.ext.login import login_required, login_user, logout_user, current_user
-#from functools import wraps
+from flask.ext.login import login_required, login_user, \
+	logout_user, current_user
+
 
 from form import MessageForm
 
@@ -20,27 +21,9 @@ home_blueprint = Blueprint(
 	template_folder='templates'
 )
 
-# This helper function is just sticking around for a while
-#if 'logged_in' in session:
-"""
-##########################
-#### helper functions ####
-##########################
-
-def login_required(test):
-	@wraps(test)
-	def wrap(*args, **kwargs):
-		if login_user == False:
-			return test(*args, **kwargs)
-		else:
-			flash('You need to login first.')
-			return redirect(url_for('home.welcome'))
-	return wrap"""
-
 ############
 ## Routes ##
 ############
-
 
 @home_blueprint.route('/index', methods=['GET', 'POST'])
 @login_required
