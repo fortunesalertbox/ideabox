@@ -1,23 +1,8 @@
 *.pyc
 *.db
+exports.txt
 venv
 
-export DATABASE_LINK="postgresql://postgres:test123@localhost/myapp_users"
-
-export APP_SETTINGS="config.DevelopmentConfig"
-
-export SECRET_KEY='`\x82\x99\xc2\xd5=\xdeJ\xd4\xb9\xb9\xf1O\x96\x0f\xe7\xfa\x91\x95\xc0\x04\x8aW\x99'
-
-https://git.heroku.com/projectideabox.git
-
-heroku config:set APP_SETTINGS=config.ProductionConfig --remote heroku
-
-HEROKU_POSTGRESQL_IVORY_URL: postgres://gmhttfelcpwwfi:evzpMAnpkYtEBXvvk_Z8D19LCC@ec2-23-21-42-29.compute-1.amazonaws.com:5432/d3ueb84i7vg0l7
-
-
-heroku config:set DATABASE_LINK=postgres://gmhttfelcpwwfi:evzpMAnpkYtEBXvvk_Z8D19LCC@ec2-23-21-42-29.compute-1.amazonaws.com:5432/d3ueb84i7vg0l7 --remote heroku
-
-heroku config:set SECRET_KEY='`\x82\x99\xc2\xd5=\xdeJ\xd4\xb9\xb9\xf1O\x96\x0f\xe7\xfa\x91\x95\xc0\x04\x8aW\x99' --remote heroku
 
 
 

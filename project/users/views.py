@@ -4,17 +4,17 @@
 
 from flask import flash, redirect, render_template, request, \
 	session, url_for, Blueprint
-#from functools import wraps 
+#from functools import wraps
 from flask.ext.login import login_user, \
-    login_required, logout_user 
+    login_required, logout_user
 
 from forms import LoginForm, RegistrationForm
 from project import db
 from project.models import UserInfo, Post, sha256_crypt
 
-##################
-#### Config ######
-##################
+################
+#### Config ####
+################
 
 users_blueprint = Blueprint(
     'users', __name__,
@@ -39,10 +39,10 @@ def signup():
 		db.session.add(user)
 		db.session.commit()
 		login_user(user)
-		#session['logged_in'] = True 
+		#session['logged_in'] = True
 		return redirect(url_for('home.index'))
-	return render_template('signup.html', 
-		form=form, error=error, 
+	return render_template('signup.html',
+		form=form, error=error,
 		title='Register'
 	)
 
@@ -59,10 +59,10 @@ def login():
 			).first()
 			if user is not None and \
 					sha256_crypt.verify(
-						str(request.form['password']), 
+						str(request.form['password']),
 						user.password
 					):
-				#session['logged_in'] = True 
+				#session['logged_in'] = True
 				login_user(user)
 				#flash('login successful')
 				return redirect(url_for('home.index'))
